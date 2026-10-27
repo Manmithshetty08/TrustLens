@@ -1,0 +1,1455 @@
+
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap');
+
+/* ========================================
+   1. GLOBAL STYLES
+======================================== */
+:root {
+  font-family: 'Inter', 'Segoe UI', sans-serif;
+  color: #182640;
+  background: #f4f7fc;
+  font-synthesis: none;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+
+  --primary: #3973ed;
+  --primary-dark: #2358c8;
+  --navy: #101c30;
+  --text: #182640;
+  --muted: #8390a5;
+  --border: #e5eaf2;
+  --surface: #ffffff;
+  --green: #18a77d;
+  --purple: #8a6bed;
+  --orange: #e99a40;
+  --red: #e16d78;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html {
+  min-width: 320px;
+  min-height: 100%;
+  background: #f4f7fc;
+  scroll-behavior: smooth;
+}
+
+body {
+  margin: 0;
+  min-width: 320px;
+  min-height: 100vh;
+  background: #f4f7fc;
+}
+
+button,
+input,
+select,
+textarea {
+  font: inherit;
+}
+
+button {
+  cursor: pointer;
+}
+
+button:disabled {
+  cursor: not-allowed;
+  opacity: 0.55;
+}
+
+button:focus-visible,
+input:focus-visible,
+select:focus-visible {
+  outline: 3px solid #a6c3ff;
+  outline-offset: 2px;
+}
+
+::selection {
+  background: #d9e6ff;
+  color: #14274a;
+}
+
+#root {
+  min-height: 100vh;
+}
+
+/* ========================================
+   2. APPLICATION LAYOUT
+======================================== */
+.app-shell {
+  min-height: 100vh;
+}
+
+.sidebar {
+  position: fixed;
+  inset: 0 auto 0 0;
+  width: 245px;
+  display: flex;
+  flex-direction: column;
+  z-index: 20;
+  overflow-y: auto;
+  background: var(--navy);
+  color: #d4deee;
+  border-right: 1px solid #263650;
+}
+
+.main-content {
+  min-height: 100vh;
+  max-width: 1900px;
+  margin-left: 245px;
+  padding: 0 32px;
+}
+
+/* ========================================
+   3. BRAND
+======================================== */
+.brand {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 26px 20px 31px;
+}
+
+.brand-logo {
+  display: grid;
+  place-items: center;
+  flex-shrink: 0;
+  width: 44px;
+  height: 44px;
+  border-radius: 14px;
+  color: #ffffff;
+  background: linear-gradient(145deg, #43d7b5, #3677fa);
+  font-size: 26px;
+  font-weight: 800;
+  box-shadow: 0 7px 22px #1678bf40;
+}
+
+.brand h2 {
+  margin: 0;
+  color: #ffffff;
+  font-size: 22px;
+  font-weight: 800;
+  letter-spacing: -0.8px;
+}
+
+.brand p {
+  margin: 5px 0 0;
+  color: #8ea1bd;
+  font-size: 9px;
+  font-weight: 600;
+  letter-spacing: 0.9px;
+}
+
+/* ========================================
+   4. SIDEBAR NAVIGATION
+======================================== */
+.nav-caption {
+  padding: 0 22px 12px;
+  color: #7588a5;
+  font-size: 9px;
+  font-weight: 800;
+  letter-spacing: 1.5px;
+}
+
+.nav-list {
+  display: grid;
+  gap: 5px;
+  padding: 0 11px;
+}
+
+.nav-item {
+  position: relative;
+  display: flex;
+  align-items: center;
+  gap: 13px;
+  width: 100%;
+  padding: 12px 13px;
+  border: 0;
+  border-radius: 8px;
+  background: transparent;
+  color: #aebdd2;
+  text-align: left;
+  font-size: 12px;
+  font-weight: 500;
+  transition: background 0.2s, color 0.2s;
+}
+
+.nav-item:hover {
+  background: #1b2d47;
+  color: #ffffff;
+}
+
+.nav-item.active {
+  color: #ffffff;
+  background: linear-gradient(100deg, #2866e8, #367cf6);
+  box-shadow: 0 6px 17px #2468e42a;
+}
+
+.nav-icon {
+  width: 20px;
+  flex-shrink: 0;
+  text-align: center;
+  font-size: 19px;
+}
+
+.nav-current {
+  width: 5px;
+  height: 5px;
+  margin-left: auto;
+  border-radius: 50%;
+  background: #a8ffe4;
+}
+
+.sidebar-bottom {
+  margin-top: auto;
+  padding: 20px;
+  border-top: 1px solid #273650;
+  color: #d7e4f7;
+  font-size: 10px;
+}
+
+.sidebar-bottom small {
+  display: block;
+  margin: 9px 0 0 17px;
+  color: #7f94b1;
+  font-size: 10px;
+}
+
+.online-dot {
+  display: inline-block;
+  width: 7px;
+  height: 7px;
+  margin-right: 7px;
+  border-radius: 50%;
+  background: #21c993;
+  box-shadow: 0 0 8px #21c99330;
+}
+
+/* ========================================
+   5. TOP BAR
+======================================== */
+.topbar {
+  min-height: 91px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 14px;
+  border-bottom: 1px solid var(--border);
+}
+
+.breadcrumb {
+  color: #8592a7;
+  font-size: 10px;
+}
+
+.topbar h1 {
+  margin: 7px 0 0;
+  color: var(--text);
+  font-size: 22px;
+  font-weight: 700;
+  letter-spacing: -0.6px;
+}
+
+.profile {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.profile-avatar {
+  display: grid;
+  place-items: center;
+  width: 36px;
+  height: 36px;
+  flex-shrink: 0;
+  border-radius: 12px;
+  background: #e5edff;
+  color: #2f68dd;
+  font-size: 13px;
+  font-weight: 800;
+}
+
+.profile strong,
+.profile small {
+  display: block;
+}
+
+.profile strong {
+  font-size: 11px;
+}
+
+.profile small {
+  margin-top: 4px;
+  color: #8a97aa;
+  font-size: 9px;
+}
+
+/* ========================================
+   6. HERO BANNER
+======================================== */
+.hero {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  min-height: 224px;
+  margin: 25px 0 27px;
+  padding: 30px 35px;
+  overflow: hidden;
+  border-radius: 17px;
+  color: #ffffff;
+  background: linear-gradient(
+    110deg,
+    #152d50 0%,
+    #204a85 55%,
+    #367af0 100%
+  );
+  box-shadow: 0 12px 30px #234f881c;
+}
+
+.hero-copy {
+  position: relative;
+  z-index: 2;
+  max-width: 670px;
+}
+
+.hero-kicker {
+  color: #a9f5df;
+  font-size: 9px;
+  font-weight: 800;
+  letter-spacing: 1.4px;
+}
+
+.hero-kicker i {
+  display: inline-block;
+  width: 6px;
+  height: 6px;
+  margin-right: 7px;
+  border-radius: 50%;
+  background: #48e0b7;
+}
+
+.hero h2 {
+  margin: 14px 0 9px;
+  color: #ffffff;
+  font-size: clamp(25px, 3vw, 35px);
+  font-weight: 800;
+  letter-spacing: -1.1px;
+}
+
+.hero p {
+  max-width: 590px;
+  margin: 0;
+  color: #d1def2;
+  font-size: 12px;
+  line-height: 1.8;
+}
+
+.hero-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  margin-top: 21px;
+}
+
+.hero-graphic {
+  position: absolute;
+  top: 50%;
+  right: 8%;
+  display: grid;
+  place-items: center;
+  width: 170px;
+  height: 170px;
+  transform: translateY(-50%);
+  opacity: 0.85;
+}
+
+.hero-ring {
+  position: absolute;
+  border: 1px solid #b8d7ff65;
+  border-radius: 50%;
+}
+
+.ring-a {
+  width: 160px;
+  height: 70px;
+  transform: rotate(-25deg);
+}
+
+.ring-b {
+  width: 125px;
+  height: 145px;
+  transform: rotate(45deg);
+}
+
+.hero-orb {
+  display: grid;
+  place-items: center;
+  width: 73px;
+  height: 73px;
+  border: 1px solid #b5e7ff75;
+  border-radius: 22px;
+  background: #ffffff12;
+  color: #b8ffed;
+  font-size: 37px;
+  font-weight: 800;
+  box-shadow: 0 0 35px #6bc6ff20;
+}
+
+.orb-dot {
+  position: absolute;
+  width: 9px;
+  height: 9px;
+  border-radius: 50%;
+  background: #70efd0;
+  box-shadow: 0 0 13px #70efd0;
+}
+
+.dot-a {
+  top: 17px;
+  right: 34px;
+}
+
+.dot-b {
+  bottom: 23px;
+  left: 17px;
+  background: #b4c8ff;
+}
+
+.dot-c {
+  top: 78px;
+  right: 1px;
+  background: #ffffff;
+}
+
+/* ========================================
+   7. BUTTONS
+======================================== */
+.btn-light,
+.btn-outline,
+.btn-primary,
+.btn-secondary {
+  padding: 11px 15px;
+  border-radius: 8px;
+  font-size: 11px;
+  font-weight: 700;
+  transition: transform 0.18s, filter 0.18s;
+}
+
+.btn-light {
+  border: 0;
+  background: #ffffff;
+  color: #214d94;
+}
+
+.btn-outline {
+  border: 1px solid #ffffff60;
+  background: #ffffff0c;
+  color: #ffffff;
+}
+
+.btn-primary {
+  border: 0;
+  background: var(--primary);
+  color: #ffffff;
+  box-shadow: 0 5px 13px #2868ed20;
+}
+
+.btn-secondary {
+  border: 1px solid #d9e4fa;
+  background: #edf3ff;
+  color: #2b63c8;
+}
+
+.btn-light:hover,
+.btn-primary:hover,
+.btn-secondary:hover,
+.btn-outline:hover {
+  filter: brightness(0.97);
+  transform: translateY(-1px);
+}
+
+.button-row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+
+/* ========================================
+   8. ALERTS AND LOADING
+======================================== */
+.alert {
+  display: flex;
+  align-items: flex-start;
+  gap: 12px;
+  margin: 14px 0;
+  padding: 13px 15px;
+  border: 1px solid;
+  border-radius: 9px;
+  font-size: 11px;
+  line-height: 1.7;
+  overflow-wrap: anywhere;
+}
+
+.alert strong {
+  flex-shrink: 0;
+}
+
+.alert p {
+  margin: 0;
+}
+
+.alert-error {
+  border-color: #f3d0d0;
+  background: #fff0f0;
+  color: #a23a45;
+}
+
+.alert-success {
+  border-color: #c9efdc;
+  background: #edfbf4;
+  color: #19794f;
+}
+
+.alert-info {
+  border-color: #d7e6ff;
+  background: #eef5ff;
+  color: #315fa7;
+}
+
+.spinner {
+  width: 14px;
+  height: 14px;
+  flex: 0 0 14px;
+  border: 2px solid #aac9f8;
+  border-top-color: #2868ed;
+  border-radius: 50%;
+  animation: spin 0.8s linear infinite;
+}
+
+@keyframes spin {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+/* ========================================
+   9. SECTION HEADINGS
+======================================== */
+.section-heading {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  margin-bottom: 17px;
+}
+
+.section-heading h2 {
+  margin: 0;
+  color: var(--text);
+  font-size: 16px;
+  letter-spacing: -0.3px;
+}
+
+.section-heading p {
+  margin: 6px 0 0;
+  color: #8692a6;
+  font-size: 10px;
+  line-height: 1.6;
+}
+
+.state-pill {
+  display: inline-flex;
+  align-items: center;
+  gap: 7px;
+  padding: 7px 10px;
+  border-radius: 7px;
+  font-size: 9px;
+  font-weight: 700;
+  white-space: nowrap;
+}
+
+.state-pill i {
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: currentColor;
+}
+
+.state-pending {
+  background: #fff5df;
+  color: #a06b1c;
+}
+
+.state-ready {
+  background: #e8f9f1;
+  color: #16845a;
+}
+
+/* ========================================
+   10. METRIC CARDS
+======================================== */
+.metric-grid {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 13px;
+  margin-bottom: 16px;
+}
+
+.metric-card {
+  min-width: 0;
+  padding: 17px;
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  background: #ffffff;
+  box-shadow: 0 4px 15px #172c4b05;
+  transition: transform 0.18s, box-shadow 0.18s;
+}
+
+.metric-card:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 9px 22px #172c4b0a;
+}
+
+.metric-heading {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 8px;
+  color: #7d899d;
+  font-size: 10px;
+}
+
+.metric-icon {
+  display: grid;
+  place-items: center;
+  width: 27px;
+  height: 27px;
+  border-radius: 9px;
+  background: #edf3ff;
+  color: var(--primary);
+}
+
+.metric-icon.purple {
+  background: #f2edff;
+  color: var(--purple);
+}
+
+.metric-icon.green {
+  background: #e9faf3;
+  color: var(--green);
+}
+
+.metric-icon.orange {
+  background: #fff3e5;
+  color: var(--orange);
+}
+
+.metric-value {
+  display: block;
+  margin: 13px 0 8px;
+  color: #172742;
+  font-size: 27px;
+  font-weight: 800;
+  letter-spacing: -1px;
+  overflow-wrap: anywhere;
+}
+
+.metric-card p {
+  margin: 0;
+  color: #8b97a9;
+  font-size: 9px;
+  line-height: 1.7;
+}
+
+/* ========================================
+   11. PANELS AND CHARTS
+======================================== */
+.chart-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 16px;
+  margin-bottom: 16px;
+}
+
+.panel {
+  min-width: 0;
+  margin-bottom: 16px;
+  padding: 20px;
+  border: 1px solid var(--border);
+  border-radius: 13px;
+  background: #ffffff;
+  box-shadow: 0 4px 15px #1b315005;
+}
+
+.chart-grid .panel {
+  margin-bottom: 0;
+}
+
+.panel-heading {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 12px;
+  margin-bottom: 19px;
+}
+
+.panel-heading h3 {
+  margin: 0;
+  color: #1b2b44;
+  font-size: 13px;
+  font-weight: 700;
+}
+
+.panel-heading p {
+  margin: 6px 0 0;
+  color: #8995a7;
+  font-size: 10px;
+  line-height: 1.7;
+}
+
+.panel-dots {
+  color: #a3afbf;
+  font-size: 12px;
+  letter-spacing: 2px;
+}
+
+.recharts-responsive-container {
+  font-size: 11px;
+}
+
+.recharts-default-tooltip {
+  border: 1px solid #e6ebf3 !important;
+  border-radius: 9px !important;
+  box-shadow: 0 6px 20px #172c4b12 !important;
+  font-size: 11px !important;
+}
+
+/* ========================================
+   12. EMPTY CHART STATE
+======================================== */
+.empty-chart {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  min-height: 235px;
+  padding: 25px;
+  border: 1px dashed #dbe3f0;
+  border-radius: 10px;
+  background: #fafcff;
+  text-align: center;
+}
+
+.empty-chart-icon {
+  display: grid;
+  place-items: center;
+  width: 43px;
+  height: 43px;
+  margin-bottom: 13px;
+  border-radius: 13px;
+  background: #eaf1ff;
+  color: #4077e8;
+  font-size: 22px;
+}
+
+.empty-chart strong {
+  color: #3a4961;
+  font-size: 11px;
+}
+
+.empty-chart p {
+  max-width: 330px;
+  margin: 8px 0 0;
+  color: #8a97aa;
+  font-size: 10px;
+  line-height: 1.8;
+}
+
+/* ========================================
+   13. EXPLANATION PANELS
+======================================== */
+.explanation {
+  display: flex;
+  align-items: flex-start;
+  gap: 10px;
+  margin-top: 14px;
+  padding: 13px;
+  border: 1px solid #e8edf5;
+  border-radius: 9px;
+  background: #f8faff;
+}
+
+.explanation-mark {
+  display: grid;
+  place-items: center;
+  width: 20px;
+  height: 20px;
+  flex: 0 0 20px;
+  border-radius: 50%;
+  background: #e2ebff;
+  color: #3165ca;
+  font-size: 11px;
+  font-weight: 800;
+}
+
+.explanation strong {
+  display: block;
+  color: #35455f;
+  font-size: 10px;
+  line-height: 1.6;
+}
+
+.explanation p {
+  margin: 5px 0 0;
+  color: #78869b;
+  font-size: 10px;
+  line-height: 1.85;
+}
+
+.insight {
+  margin-top: 14px;
+  padding: 14px 16px;
+  border: 1px solid #dfe8f6;
+  border-radius: 9px;
+  background: #f5f8ff;
+}
+
+.insight strong {
+  display: block;
+  color: #30476a;
+  font-size: 11px;
+}
+
+.insight p {
+  margin: 6px 0 0;
+  color: #687890;
+  font-size: 10px;
+  line-height: 1.8;
+}
+
+/* ========================================
+   14. METRIC FORMULA CARDS
+======================================== */
+.detail-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 12px;
+  margin: 16px 0;
+}
+
+.detail-grid > div {
+  padding: 16px;
+  border: 1px solid #e6ebf3;
+  border-radius: 10px;
+  background: #f9fbff;
+  transition: border-color 0.18s;
+}
+
+.detail-grid > div:hover {
+  border-color: #c7d8fb;
+}
+
+.detail-grid h4 {
+  margin: 0 0 9px;
+  color: #233653;
+  font-size: 12px;
+}
+
+.detail-grid p {
+  min-height: 40px;
+  margin: 0 0 12px;
+  color: #718099;
+  font-size: 10px;
+  line-height: 1.8;
+}
+
+.detail-grid code {
+  display: block;
+  padding: 10px;
+  border-radius: 6px;
+  background: #edf3ff;
+  color: #2859aa;
+  font-family: Consolas, monospace;
+  font-size: 10px;
+  line-height: 1.7;
+  white-space: normal;
+  overflow-wrap: anywhere;
+}
+
+/* ========================================
+   15. TABLES
+======================================== */
+.result-table-wrap {
+  width: 100%;
+  margin: 15px 0;
+  overflow-x: auto;
+  border: 1px solid #e9edf4;
+  border-radius: 9px;
+}
+
+.result-table {
+  width: 100%;
+  border-collapse: collapse;
+  background: #ffffff;
+  font-size: 11px;
+  text-align: left;
+}
+
+.result-table th {
+  padding: 13px;
+  background: #f5f8fd;
+  color: #718099;
+  font-size: 10px;
+  font-weight: 700;
+  white-space: nowrap;
+}
+
+.result-table td {
+  padding: 12px 13px;
+  border-bottom: 1px solid #edf0f6;
+  color: #40516b;
+  line-height: 1.7;
+}
+
+.result-table tbody tr:last-child td {
+  border-bottom: 0;
+}
+
+.result-table tbody tr:hover {
+  background: #f8faff;
+}
+
+/* ========================================
+   16. CONFUSION MATRIX
+======================================== */
+.matrix-label {
+  color: #75839a;
+  font-size: 10px;
+  text-align: center;
+}
+
+.matrix {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 6px;
+  max-width: 390px;
+  margin: 16px auto;
+}
+
+.matrix-cell {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  min-height: 80px;
+  padding: 10px;
+  border-radius: 8px;
+  overflow-wrap: anywhere;
+  text-align: center;
+}
+
+.matrix-cell.correct {
+  background: #e1f5e9;
+  color: #197448;
+}
+
+.matrix-cell.incorrect {
+  background: #fff0e7;
+  color: #a85c28;
+}
+
+.matrix-cell strong {
+  font-size: 22px;
+  font-weight: 800;
+}
+
+.matrix-cell small {
+  margin-top: 5px;
+  font-size: 9px;
+  line-height: 1.6;
+}
+
+/* ========================================
+   17. EVALUATION STATUS
+======================================== */
+.dimension-list {
+  display: grid;
+}
+
+.dimension-row {
+  display: flex;
+  align-items: center;
+  gap: 11px;
+  padding: 12px 0;
+  border-bottom: 1px solid #edf0f6;
+}
+
+.dimension-row:last-child {
+  border-bottom: 0;
+}
+
+.dimension-icon {
+  display: grid;
+  place-items: center;
+  width: 29px;
+  height: 29px;
+  flex-shrink: 0;
+  border-radius: 9px;
+  background: #f0f3f9;
+  color: #98a5b8;
+  font-size: 15px;
+}
+
+.dimension-icon.ready {
+  background: #e5f8ef;
+  color: #159b6a;
+}
+
+.dimension-row > div {
+  flex: 1;
+  min-width: 0;
+}
+
+.dimension-row strong,
+.dimension-row small {
+  display: block;
+}
+
+.dimension-row strong {
+  color: #2b3c56;
+  font-size: 11px;
+}
+
+.dimension-row small {
+  margin-top: 4px;
+  color: #8b97aa;
+  font-size: 9px;
+}
+
+.mini-status {
+  color: #9aa5b5;
+  font-size: 9px;
+  white-space: nowrap;
+}
+
+.ready-text {
+  color: #16865b;
+  font-weight: 700;
+}
+
+/* ========================================
+   18. TRUST DIMENSION CARDS
+======================================== */
+.dimension-cards {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 11px;
+}
+
+.dimension-cards button {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 10px;
+  min-width: 0;
+  padding: 15px;
+  border: 1px solid #e8edf5;
+  border-radius: 10px;
+  background: #fbfcff;
+  text-align: left;
+  transition: border-color 0.18s, background 0.18s, transform 0.18s;
+}
+
+.dimension-cards button:hover {
+  transform: translateY(-2px);
+  border-color: #b9cefa;
+  background: #f5f8ff;
+}
+
+.dimension-cards b {
+  display: grid;
+  place-items: center;
+  width: 30px;
+  height: 30px;
+  border-radius: 9px;
+  font-size: 10px;
+}
+
+.d-blue {
+  background: #e7efff;
+  color: #386ce1;
+}
+
+.d-green {
+  background: #e3f8ee;
+  color: #178e64;
+}
+
+.d-purple {
+  background: #f0eaff;
+  color: #795ad7;
+}
+
+.d-orange {
+  background: #fff0dd;
+  color: #b87927;
+}
+
+.dimension-cards strong {
+  color: #263852;
+  font-size: 11px;
+}
+
+.dimension-cards span {
+  color: #8390a5;
+  font-size: 9px;
+  line-height: 1.7;
+}
+
+/* ========================================
+   19. DATASET UPLOAD
+======================================== */
+.upload-zone {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 10px;
+  margin: 20px 0;
+  padding: 31px 16px;
+  border: 1px dashed #b9cae9;
+  border-radius: 12px;
+  background: #f8faff;
+  color: #2b3c56;
+  text-align: center;
+  transition: border-color 0.2s, background 0.2s;
+}
+
+.upload-zone:hover {
+  border-color: #6493f2;
+  background: #f2f6ff;
+}
+
+.upload-symbol {
+  display: grid;
+  place-items: center;
+  width: 43px;
+  height: 43px;
+  border-radius: 13px;
+  background: #e7efff;
+  color: #326de5;
+  font-size: 25px;
+}
+
+.upload-zone strong {
+  font-size: 12px;
+  overflow-wrap: anywhere;
+}
+
+.upload-zone small {
+  color: #8996aa;
+  font-size: 10px;
+  line-height: 1.7;
+}
+
+.upload-zone input {
+  max-width: 100%;
+  color: #64748b;
+  font-size: 10px;
+}
+
+/* ========================================
+   20. FORMS AND TRAINING
+======================================== */
+.field {
+  display: grid;
+  gap: 8px;
+  margin: 20px 0;
+}
+
+.field label {
+  color: #35455e;
+  font-size: 11px;
+  font-weight: 700;
+}
+
+.field select,
+.readout {
+  width: 100%;
+  min-height: 42px;
+  padding: 12px;
+  border: 1px solid #dfe6f0;
+  border-radius: 8px;
+  background: #ffffff;
+  color: #35455e;
+  font-size: 11px;
+  transition: border-color 0.18s, box-shadow 0.18s;
+}
+
+.field select:focus {
+  border-color: #77a0f7;
+  box-shadow: 0 0 0 3px #3973ed12;
+  outline: none;
+}
+
+.field small {
+  color: #8a97aa;
+  font-size: 10px;
+  line-height: 1.7;
+}
+
+.training-note {
+  margin: 20px 0;
+  padding: 14px;
+  border: 1px solid #dfe9fb;
+  border-radius: 9px;
+  background: #f5f8ff;
+}
+
+.training-note strong {
+  color: #30476a;
+  font-size: 11px;
+}
+
+.training-note p {
+  margin: 7px 0 0;
+  color: #6e7f99;
+  font-size: 10px;
+  line-height: 1.8;
+}
+
+/* ========================================
+   21. DATA QUALITY CARDS
+======================================== */
+.quality-grid {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 10px;
+  margin-bottom: 16px;
+}
+
+.quality-grid .metric-card {
+  padding: 13px;
+}
+
+.quality-grid .metric-value {
+  font-size: 22px;
+}
+
+/* ========================================
+   22. REPORTS
+======================================== */
+.report-description {
+  margin: 0 0 18px;
+  color: #7c899e;
+  font-size: 11px;
+  line-height: 1.9;
+}
+
+/* ========================================
+   23. FOOTER
+======================================== */
+.footer {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 12px;
+  margin-top: 26px;
+  padding: 21px 0;
+  border-top: 1px solid #e5eaf2;
+  color: #8995a8;
+  font-size: 9px;
+}
+
+.footer i {
+  display: inline-block;
+  width: 7px;
+  height: 7px;
+  margin-right: 6px;
+  border-radius: 50%;
+  background: #21c993;
+}
+
+/* ========================================
+   24. RESPONSIVE TABLETS
+======================================== */
+@media (max-width: 1200px) {
+  .sidebar {
+    width: 215px;
+  }
+
+  .main-content {
+    margin-left: 215px;
+    padding: 0 22px;
+  }
+
+  .metric-grid,
+  .quality-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .dimension-cards {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .hero-graphic {
+    right: 2%;
+    opacity: 0.35;
+  }
+
+  .hero-copy {
+    max-width: 85%;
+  }
+}
+
+/* ========================================
+   25. RESPONSIVE SMALL SCREENS
+======================================== */
+@media (max-width: 850px) {
+  .sidebar {
+    position: relative;
+    width: 100%;
+    max-height: none;
+    overflow: visible;
+  }
+
+  .brand {
+    padding: 15px 19px;
+  }
+
+  .nav-caption,
+  .sidebar-bottom {
+    display: none;
+  }
+
+  .nav-list {
+    display: flex;
+    gap: 5px;
+    padding: 0 10px 12px;
+    overflow-x: auto;
+    scrollbar-width: thin;
+  }
+
+  .nav-item {
+    flex: 0 0 auto;
+    width: auto;
+    white-space: nowrap;
+  }
+
+  .main-content {
+    margin-left: 0;
+    padding: 0 15px;
+  }
+
+  .chart-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .hero-graphic {
+    right: -20px;
+    opacity: 0.15;
+  }
+
+  .hero-copy {
+    max-width: 100%;
+  }
+}
+
+/* ========================================
+   26. RESPONSIVE MOBILE
+======================================== */
+@media (max-width: 520px) {
+  .main-content {
+    padding: 0 12px;
+  }
+
+  .topbar {
+    min-height: 80px;
+  }
+
+  .topbar h1 {
+    font-size: 19px;
+  }
+
+  .profile > div:last-child {
+    display: none;
+  }
+
+  .hero {
+    min-height: 210px;
+    padding: 23px 20px;
+  }
+
+  .hero h2 {
+    font-size: 26px;
+  }
+
+  .hero p {
+    font-size: 11px;
+  }
+
+  .metric-grid,
+  .quality-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 9px;
+  }
+
+  .metric-card {
+    padding: 13px;
+  }
+
+  .metric-value {
+    font-size: 23px;
+  }
+
+  .section-heading {
+    align-items: flex-start;
+  }
+
+  .state-pill {
+    font-size: 8px;
+  }
+
+  .panel {
+    padding: 15px;
+  }
+
+  .detail-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .dimension-cards {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .button-row {
+    flex-direction: column;
+  }
+
+  .button-row button {
+    width: 100%;
+  }
+
+  .footer {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+}
+
+/* ========================================
+   27. ACCESSIBILITY
+======================================== */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    scroll-behavior: auto !important;
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+}
